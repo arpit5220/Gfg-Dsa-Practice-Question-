@@ -1,25 +1,33 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        
-        HashMap<Integer,Integer> hm=new HashMap<>();
-        for(int i=0;i<nums.length;i++)
-        {
-            hm.put(nums[i],i);
-        }
-        
-        for(int i=0;i<nums.length;i++)
-        {
-            int t=nums[i];
-            int rem=target-t;
-            if(hm.containsKey(rem))
-            {
-                int index=hm.get(rem);
-                if(index==i) continue;    // to chek if 6-3=3--> already present in hashmap
-                return new int[]{i,index};  // just dry run second test case and you will be able to know
-                    
+       int[] result= new int[2];
+        for (int i=0; i< nums.length; i++){
+            for(int j = i+1; j< nums.length; j++){
+                int val = nums[i] + nums[j];
+                if ( val== target){
+                    result[0]=i;
+                    result[1]=j;
+                   break;
+                }
             }
         }
-        
-        return new int[]{};
+        return result;
     }
 }
+
+
+
+
+// HashMap<Integer,Integer> map=new HashMap<>();
+        
+//         for(int i=0;i<nums.length;i++){
+//             int goal=target-nums[i];
+//             if(map.containsKey(goal)){
+//                 return new int[]{i,map.get(goal)};
+//             }
+//             else{
+//                 map.put(nums[i],i);
+//             }
+//         }
+        
+//         return null;
